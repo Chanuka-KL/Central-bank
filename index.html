@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UwU Central Bank</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>💖 UwU Central Bank 💖</h1>
+    <div class="stats">
+      <p><strong>Currency:</strong> <span id="currency"></span></p>
+      <p><strong>Total Printed:</strong> <span id="printed"></span></p>
+      <p><strong>Total Exported:</strong> <span id="exported"></span></p>
+      <p><strong>Reserve:</strong> <span id="reserve"></span></p>
+    </div>
+    <div class="controls">
+      <input type="number" id="amount" placeholder="Enter amount" />
+      <button onclick="printMoney()">💸 Print</button>
+      <button onclick="exportMoney()">📤 Export</button>
+    </div>
+  </div>
+
+  <script>
+    async function loadData() {
+      const res = await fetch('/api/reserve');
+      const data = await res.json();
+      document.getElementById('currency').innerText = data.currency;
+      document.getElementById('printed').innerText = data.totalPrinted;
+      document.getElementById('exported').innerText = data.totalExported;
+      document.getElementById('reserve').innerText = data.reserve;
+    }
+
+    async function printMoney() {
+      const amount = document.getElementById('amount').value;
+      await fetch('/api/print', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount })
+      });
+      loadData();
+    }
+
+    async function exportMoney() {
+      const amount = document.getElementById('amount').value;
+      await fetch('/api/export', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount })
+      });
+      loadData();
+    }
+
+    loadData();
+  </script>
+</body>
+</html>
