@@ -1,0 +1,47 @@
+body {
+  background: #ffe8f4;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #4b0055;
+  text-align: center;
+  padding: 2em;
+}
+
+.container {
+  max-width: 400px;
+  margin: auto;
+  background: #fff0fa;
+  padding: 2em;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #ffb3da;
+}
+
+.stats p {
+  margin: 0.5em 0;
+}
+
+.controls {
+  margin-top: 2em;
+}
+
+input {
+  padding: 0.5em;
+  border: 1px solid #ffb3da;
+  border-radius: 10px;
+  margin-bottom: 1em;
+  width: 80%;
+}
+
+button {
+  padding: 0.5em 1em;
+  margin: 0 0.5em;
+  background: #ffb3da;
+  border: none;
+  border-radius: 10px;
+  color: #4b0055;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ff92c5;
+}
